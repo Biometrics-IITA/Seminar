@@ -1,5 +1,5 @@
 # Introduction
-This is a seminar series on Machine Learning. Below are the topics that have been covered in this seminar series
+This is a seminar series on Machine Learning. The dataset used are uploaded above. 
 
 # Seminar Topics
 The following topics are covered in the seminar series
