@@ -1,0 +1,634 @@
+---
+title: "<p style=\"color:black,text-align:center\">Introduction to Machine Learning </p>"
+institute: <font color=#ff6600><b>IITA Biometrics Unit</b></font>
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    code_folding: show
+    number_sections: false
+    theme: readable
+    highlight: monochrome
+    fig_width: 5
+    fig_height: 5
+    fig_caption: true
+    df_print: paged
+    xaringan::moon_reader: null
+    css: assets/rany_style.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+  word_document:
+    toc: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# **<span style="color: #234F1E;"> Introduction</span>**
+
+Artificial intelligence (**AI**) is a technology that equips machines with the ability to simulate human behavior, specifically cognitive processes.
+
+Machine learning (**ML**) is a branch of **AI** that focuses on using data and algorithms to learn in the same way that humans do, gradually improving its accuracy. Machine learning algorithms develop a mathematical model that helps make predictions or decisions based on sample historical data, or training data, without needing explicit programming. By integrating statistics and computer science, machine learning facilitates the creation of predictive models.
+
+<img src="images/ML1.png" width="75%"/>
+
+**ML** models prioritize prediction accuracy and are very good at handling complex data, while **classical statistical models** focus on understanding relationships and making inferences. Nevertheless, both have their place in data science, depending on the problem and context.
+
+**ML** offers numerous benefits that increase agricultural efficiencies, improve crop yield, and reduce food cost of production. **ML** can identify patterns and trends in massive data that humans may miss entirely.
+
+This analysis requires little human intervention: simply feed in the dataset of interest and allow the **ML** system to assemble and refine its algorithms which will continuously improve with more data input over time.
+
+The drawback of **ML**, it requires large training datasets that are both accurate and unbiased. Gathering enough data and having a system that can handle it may also be a drain on resources. **ML** can also be error-prone, depending on the input. With too small a sample size, the system may generate a perfectly logical algorithm that is completely incorrect or misleading. **ML** is a powerful tool that transforms industries, however, it's crucial to understand its potential and limitations.
+
+## <span style="color: #002D62;"> Features of Machine Learning </span>
+
+1. Machine learning utilizes data to identify patterns within a dataset.
+2. It learns from past data and improves autonomously over time. 
+3. As a data-driven technology, machine learning shares similarities with data mining, both of which involve working with large volumes of data.
+
+## <span style="color: #002D62;"> ML: The Jargon </span>
+
+<img src="images/jargon.png" width="60%"/>
+
+  + **Instance:** A single row (observation) of data is called an instance
+
+  + **Feature:** A single column (independent variable, attribute) is called a feature. The predictor is called **Target**
+
+  + **Data Type:** Data can be quantitative (e.g., regression) or qualitative (e.g., classification)
+
+  + **Training Dataset:** A dataset to feed into our ML to train the model
+
+  + **Testing Dataset:** A new dataset to validate the accuracy of the model 
+  
+  + **Data:** Machine learning requires data to train the models. This data could be anything from images and text to numerical values and more.
+
+  +   **Algorithms:** These are the methods or techniques used to analyze the data. Different algorithms are used depending on the task, such as classification, regression, clustering, etc.
+
+  + **Training:** This is the process where the algorithm learns from the data. During training, the algorithm adjusts its parameters to minimize errors and improve accuracy.
+
+  + **Prediction/Inference:** After training, the model can make predictions or decisions based on new, unseen data.
+
+  + **Evaluation:** The performance of the model is assessed using metrics like accuracy, precision, recall, etc., to ensure it meets the desired goals.
+
+
+# **<span style="color: #2C6D26;"> The ML workflow</span> **
+
+  + **STEP 0:** Define the Problem and Collect/Gather the data that will be used to train the model
+  + **STEP 1 - Data pre-processing:** 
+    * Clean the dataset to handle missing values, incorrect data, and remove duplicates. 
+    * Perform exploratory data analysis (EDA) to understand the patterns, trends, and relationships within the data
+    * Divide the data into training and test sets 
+    * Data transformation and normalization (training and test sets) to make it suitable for modeling.
+  + **STEP 2 - Train the Model:** 
+    * Choose an ML model appropriate with the data (the target)
+    * Cross-validation: Divide the training dataset into "k" subsets or "folds". The model training and validation process is repeated "k" times, with each of the k folds used exactly once as the validation data, and the remaining k-1 folds used as training data
+    * Tune the model (some ML): based on the performance metrics, adjust the model parameters. Hyperparameter tuning can be done manually or through automated methods like grid search or random search. For simplicity, we will not cover this and will accept the default parametrization.
+
+  + **STEP 3 - Evaluate the Model:** 
+    * Assess the model's performance using cross-validation results
+    * Run the final model
+  + **STEP 4 - Test the Model:** Once the model is fine-tuned, evaluate it on the test set to assess its performance. 
+  
+<img src="images/ML4.png" width="70%"/>
+
+
+
+# **<span style="color: #2C6D26;"> Data Pre-processing in ML</span> **
+
+Once you import your dataset into R, data pre-processing is the next crucial stage. Data pre-processing, also known as data preparation, data wrangling, or feature engineering, involves several tasks:
+
+  + **Data Collection:** Gather data from various sources.
+  + **Data Cleaning:** Identifying and correcting errors or inconsistencies in the data.
+  + **Feature Selection:** Choosing relevant input variables for the model.
+  + **Data Transformation:** Converting raw data into a suitable format for modeling.
+  + **Feature Engineering:** Creating new variables from existing data.
+  + **Train-Test Split:** Divide data into training and testing sets. There are two competing concerns:
+    * With less training data, your parameter estimates have greater variance.
+    * With less testing data, your performance statistic will have greater variance.
+    * We should be concerned with dividing data such that neither variance is too high: usually **80%** for training and **20%** for testing (Thump rule)
+    
+  + **Scaling and Normalization:** Ensure features are on a similar scale
+    
+  + **Dimensionality Reduction:** Reducing the number of features while preserving information if needed.
+  
+Accurate predictions depend on high-quality data. Hence, properly prepared data simplifies model training and improves real-time project performance.
+
+
+# **<span style="color: #234F1E;"> Categories of Machine Learning </span>**
+
+Various **ML** algorithms that are commonly used can be classified under two categories:
+
+    1. Supervised learning
+    2. Unsupervised learning
+
+Each of these categories has their respective sub-categories.
+<img src="images/ML.png" width="70%"/>
+
+
+
+# **<span style="color: #234F1E;"> Supervised Learning </span>**
+
+In supervised learning, the algorithm is trained using a dataset where each input is matched with the corresponding output. This allows the model to learn how to predict the output for new, unseen inputs. This approach is commonly applied to tasks like classification, regression, and object detection. 
+
+In supervised learning, the machine learning algorithm learns from labeled data. Labeled data is data that has been tagged with a correct answer or classification. In supervised learning, the model learns from labeled examples (input-output pairs). It predicts outputs for new inputs. Classification and regression are common tasks.
+
+<img src="images/Supervised-learning.png" width="50%"/>
+
+Source:geeks for geeks 
+
+**Examples**
+
+Here are some examples of supervised learning:
+
+  * **Regression**
+  * **Classification**
+  * **Object detection**
+  * **Spam detection**
+  * **Predictive analytics**
+  * **Medical diagnosis**
+  * **Speech recognition**
+  * **Dimensional Reduction**
+
+## **<span style="color: #2C6D26;"> Regression Use Case</span> **
+
+Let's consider the `Honey.Wildflower.csv` dataset (13,016 records), this is a dataset in the public domain (Food science) with the following variables:
+
+  + **CS (Color Score):** Represents the color score of the honey sample, ranging from 1.0 to 10.0.
+  + **Density:** Represents the density of the honey sample in grams per cubic centimeter ranging from 1.21 to 1.86.
+  + **WC (Water Content):** Represents the water content in the honey sample, ranging from 12.0% to 25.0%.
+  + **pH:** Represents the pH level of the honey sample, ranging from 2.50 to 7.50.
+  + **EC (Electrical Conductivity):** Represents the electrical conductivity of the honey sample in milli Siemens per centimeter.
+  + **F (Fructose Level):** Represents the fructose level of the honey sample, ranging from 20 to 50.
+  + **G (Glucose Level):** Represents the glucose level of the honey sample, ranging from 20 to 45.
+  + **Pollen_analysis:** Represents the floral source of the honey sample.
+  + **Purity:** Represents the purity of the honey sample, ranging from 0.01 to 1.00.
+  + **Price:** The calculated price of the honey.
+
+### **STEP 1 - Data Import**
+
+The objective of this exercise is to develop a model that predicts the price of honey
+
+Let's follow our 4 steps to address the objective:
+
+  + STEP 1 - Data pre-processing
+  + STEP 2 - Train the Model
+  + STEP 3 - Evaluate the Model
+  + STEP 4 - Test the Model
+
+
+```{r message=FALSE}
+library(tidyverse) #for data import & wrangling
+library(caret) #for model performance evaluation
+data <- read_csv("Honey.Wildflower.csv", na = c("", "NA"))
+data
+```
+
+
+### **STEP 2 - Data Pre-processing & EDA **
+```{r }
+summary(data)
+```
+
+The results above shows the summary statistics of each attributes in the dataset
+
+
+
+```{r }
+# Visualize the relationship among the attributes
+psych::pairs.panels(data |> select(-Pollen_analysis),
+                    gap = 0,
+                    pch=21)
+```
+
+The plot shows the distribution of each feature and their relationship with other features. As shown, `purity` is perfectly correlated with the target feature - `price` we will exclude this attribute in our model because it distorts the regression results, making the linear regression coefficients of other features unreliable. Methods like regularization techniques (Lasso & Ridge Regression) which we are not covering in the course could be used to handle such case. We could have dropped those attributes with no strong correlation with `Price` individually, but they could have a combined effect with other attributes. Hence, it's worth keeping them for further analysis.
+
+Also, looking at the distribution of each attribute, some are skewed while some are not. Let us scale the attributes to have them on uniform scale.
+
+
+
+```{r }
+# Feature scaling - exclude the categorical & the purity attribute
+data.sc <- scale(data |> select(-c(Purity, Pollen_analysis)),
+                 center = TRUE,
+                 scale = TRUE) |> 
+                 as.data.frame()
+
+head(data.sc)
+```
+
+### **STEP 3 - Data partition into training & testing datasets**
+```{r }
+# Let's partition the dataset to training & testing datasets using the 70 - 30 split ratio
+ind <- sample(c(TRUE, FALSE), nrow(data.sc), 
+              replace = TRUE, 
+              prob = c(0.7, 0.3))
+
+training <- data.sc[ind==TRUE,]
+
+testing <- data.sc[ind==FALSE,]
+
+# Cross check the dimension of the two datasets
+dim(training)
+dim(testing)
+```
+
+### **STEP 4 - Build the Model**
+* To build a simple linear regression model, let us consider the `pH` attribute of the dataset given that it has the highest correlation coefficient with the target feature.
+
+```{r }
+# Simple Linear Regression
+model.s <- lm(Price ~ pH, data=training)
+model.s
+```
+
+Before making use of the model for prediction, we need to assess the significance of the model using the function `summary()`
+
+
+```{r }
+# Model Summary
+summary(model.s)
+```
+
+The regression coefficient of `pH` in the model is -0.228, which imply that a unit increase in the `pH` level of honey will lead to a significant reduction in the average price of honey by 0.228. The R-squared result showed that about 5% of the variability in the price of honey can be explained by the `pH` of the honey. Also, the residual standard error is 0.972 which implies that the observed price deviate from the predicted value approximately by 0.972 unit on average using `pH` attribute alone.
+
+```{r }
+# Model Diagnostics
+par(mfrow=c(2,2))
+plot(model.s)
+```
+
+### **STEP 5 - Model Performance Evaluation**
+Let take a look at the Q-Q Residuals & Residual vs Fitted plots, as we can see the data points are not distributed randomly and they do not to align with the diagonal line which imply that the model do not fit the data well. This step is an important step as it helps evaluate how well the model will generalize to an independent dataset. Common metrics used to evaluate regression model performance are **R-squared (R2)**, **Root Mean Squared Error (RMSE)**, and **Mean Absolute Error (MAE)**. These metrics can simply be estimated using the testing dataset or re-sample the data multiple time before computing the metrics.
+
+```{r }
+#Cross Validation Method 1
+pred.s <- predict(model.s, testing)
+
+data.frame( R2 = R2(pred.s, testing$Price ),
+            RMSE = RMSE(pred.s, testing$Price ),
+            MAE = MAE(pred.s, testing$Price ))
+```
+
+```{r }
+# Cross Validation Method 2 - define training control
+set.seed(17)
+train.cv <- trainControl(method = "repeatedcv", 
+                         number = 10, ##number of resampling iteration (we do more than 10 in production)
+                         repeats = 5  ##number of repeated k-fold CV to compute
+                         )
+# Train the model
+model.cv.s <- train(Price ~ pH, 
+                  data=training, 
+                  method = "lm", # To get more options names(getModelInfo())
+                  trControl = train.cv)
+
+# Make prediction and compute the R2, RMSE and MAE
+pred.cv.s <- predict(model.cv.s, testing)
+
+data.frame( R2 = R2(pred.cv.s, testing$Price ),
+            RMSE = RMSE(pred.cv.s, testing$Price ),
+            MAE = MAE(pred.cv.s, testing$Price ))
+```
+
+
+The correlation between the observed value of the honey price and the predicted value is 5.8% (NB: the higher the better) which is an indication that the model poorly fit the data. Similarly, the same conclusion can be made considering the higher values of the model's RMSE & MAE (NB: lower values are better). This implies that the attribute `pH` alone does not capture the variability in the `Price` of honey in the dataset. Therefore, let's consider fitting multiple linear regression.
+
+## **<span style="color: #2C6D26;">Classification Used Case</span> **
+
+
+The `agricolae` package in R is primarily designed for agricultural research, providing tools for design, analysis, and multivariate analysis. However, it does not directly focus on classification in the traditional supervised machine learning sense (like you would find in packages such as `caret`, `randomForest`, or `e1071`). 
+
+Nevertheless, you can use R to perform classification with some basic functions. I can provide you a sample workflow for performing classification using a dataset typically found in agriculture. Here's a basic example using the `iris` dataset (which is not from `agricolae`, but it is a commonly used dataset for demonstrating classification).
+
+### **STEP 1 - Data Import **
+
+First, make sure to install the required packages (if you haven't already):
+
+```{r, eval=FALSE, message=FALSE}
+install.packages("agricolae", repos = "https://cran.r-project.org/")
+install.packages("caret")
+install.packages("randomForest", repos = "https://cran.r-project.org/")
+
+# Load required libraries
+library(agricolae)
+library(caret) # For easy data splitting and model training
+library(randomForest)
+```
+
+
+**Load and Inspect the Dataset**
+
+Load the `iris` dataset from the `agricolae` package and inspect its structure.
+
+```{r}
+
+# Load the iris dataset
+data(iris)
+
+# Inspect the dataset  
+head(iris) 
+
+```
+
+### **Step 2 - Data Preprocessing**
+```{r}
+# View the structure of the dataset
+str(iris)
+
+summary(iris)
+```
+
+
+### **Step 3 - Data partition into training and testing datasets **
+
+Split the dataset into training (70%) and testing (30%)
+
+```{r}
+set.seed(123) # For reproducibility
+trainIndex <- createDataPartition(iris$Species, p = .7, 
+                                  list = FALSE, 
+                                  times = 1)
+irisTrain <- iris[trainIndex, ]
+irisTest <- iris[-trainIndex, ]
+```
+
+### **Step 4 - Build the model** 
+
+```{r}
+# Fit a classification model using Random Forest
+model_rf <- train(Species ~ ., data = irisTrain, method = "rf")
+
+# Model summary
+print(model_rf)
+
+```
+**Results Across Tuning Parameters:**
+
+**mtry:** In Random Forest, 'mtry' refers to the number of features randomly selected at each split in the decision trees. The results presented include three values for mtry (2, 3, and 4).
+
+For mtry = 2, the model achieved the highest accuracy of 0.9488 and a Kappa statistic of 0.9221.
+
+For mtry = 3, the accuracy was slightly lower at 0.9469, with a Kappa of 0.9192.
+
+For mtry = 4, the accuracy dropped to 0.9427, with a Kappa of 0.9129.
+
+Optimal mtry Selected: The model selected for final use is mtry = 2, which had the highest accuracy. This indicates that selecting two features for each decision tree split was the most effective in classifying the Iris species in this scenario.
+Interpretation of Performance Metrics:
+
+**Accuracy:** An accuracy of around 94.9% suggests that the model correctly classifies about 94.9% of the instances in a typical scenario. This is quite high, especially for a classification problem with three classes.
+
+**Kappa Statistic:** The Kappa statistic is a measure of agreement between the predicted and observed classifications. A Kappa value above 0.9 (as seen here) indicates almost perfect agreement, suggesting that the model's predictions are very reliable.
+Conclusion and Further Considerations:
+Given the high accuracy and Kappa scores, the Random Forest model seems to perform exceptionally well on this dataset. 
+
+### **Step 5 - Evaluate Model Parameter**
+
+```{r}
+# Make predictions on the test set
+predictions <- predict(model_rf, irisTest)
+
+# Confusion matrix to evaluate the model
+confusion_matrix <- table(irisTest$Species, predictions)  
+print(confusion_matrix)  
+```
+
+**Accuracy calculation**
+
+```{r}
+# Calculate accuracy  
+accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)  
+print(paste("Accuracy:", round(accuracy, 4)))
+```
+
+**Feature Checking**
+
+```{r, eval=FALSE, message=FALSE}
+# Example of fitting a random forest model
+library(randomForest)
+rf_model <- randomForest(Species ~ ., data = iris)
+
+# Check the class of the model object
+class(rf_model)
+
+```
+
+### Explanation:
+1. **Loading Libraries**: We load the `agricolae` (for agricultural data analysis) and `caret` (for classification and other machine learning tasks) libraries.
+
+2. **Dataset**: We use `iris`, a built-in dataset in R which contains information about different species of iris flowers based on sepal and petal dimensions.
+
+3. **Data Splitting**: The dataset is split into training and test sets to evaluate the performance of our model.
+
+4. **Model Training**: We train a Random Forest classifier on the training dataset. The `Species` column is our target variable, and the rest are features.
+
+5. **Predictions**: We use our trained model to make predictions on the test dataset.
+
+6. **Confusion Matrix**: Finally, we evaluate our model's performance using a confusion matrix, which shows how many instances were correctly predicted by the model.
+
+
+<br><br>
+
+# **<span style="color: #234F1E;"> Unsupervised Learning </span>**
+In unsupervised learning, the algorithm is trained using a dataset without labeled outputs, meaning the input data does not come with predefined answers. The model learns to identify patterns and relationships within the data. This approach is commonly used for tasks like clustering, dimensionality reduction, and anomaly detection.
+As the name implies, unsupervised learning employs self-learning algorithms that operate without labels or prior training. Instead, the model is provided with raw, unlabeled data and must derive its own rules and structure by identifying similarities, differences, and patterns, without receiving explicit instructions on how to handle each data point. Unsupervised learning algorithms are particularly effective for handling complex processing tasks, such as grouping large datasets into clusters. They excel at uncovering previously hidden patterns within the data and can reveal features that are valuable for categorizing information.
+
+<img src="images/unsupervised.png" width="60%"/>
+
+Source:geeks for geeks
+
+**Examples**
+
+Here are some examples of unsupervised learning:
+
+  * **Clustering, e.g. K-means clustering**
+  * **Association, e.g. Apriori algorithm**
+  * **Dimensionality reduction, e.g. Principal Component Analysis (PCA)**
+  * **Anomaly detection, e.g. Isolation forest**
+
+<br><br>
+
+## **<span style="color: #2C6D26;">Clustering Use Case</span> **
+
+The `agridat` package in R contains a wealth of agricultural datasets that can be used for various statistical analyses, including clustering. Clustering is a technique that can group similar data points based on their attributes. We can use the datasets in `agridat` to demonstrate clustering techniques. Let's say we want to cluster different varieties of corn based on several agronomic traits (like yield, height, and so on) to understand which varieties are similar to each other.
+
+###  **Step 1 - Install and Load Necessary Packages**
+
+
+Make sure you have the `agricolae` package installed along with `factoextra` package for visualization.
+
+  
+```{r}
+  install.packages("agricolae")  # agricolae for agricultural methods
+   install.packages("factoextra")  # for visualizing clustering
+   library(agricolae)
+   library(factoextra)
+```
+
+### **Step 2 - Load a Dataset**
+
+For this example, we will use the `corn.yield` dataset from `agridat`. This dataset includes information on different corn varieties and their yields.
+
+```{r eval=TRUE, tidy=FALSE, size='tiny'}
+ 
+   # Example data - replace with your own dataset
+   data(iris)
+   df <- iris[, -5]  # Exclude Species for clustering
+```
+
+
+
+### **Step 3 - Data Preprocessing**
+
+It's essential to preprocess the data, such as scaling or normalizing if the features have different scales.
+
+```{r}
+ df_scaled <- scale(df) #scale the dataset
+```
+
+
+###**Step 5 - K-means Clustering**
+
+We can use the `k-means` clustering method and the elbow method to find the optimal number of clusters.
+
+```{r}
+# Trying different values of k
+    set.seed(123)  # For reproducibility
+   kmeans_result <- kmeans(df_scaled, centers = 3, nstart = 25)
+   
+ 
+```
+
+Use packages like `factoextra` to visualize the clustering results.
+
+###  **Step 6 - Visualizing Clusters**
+
+We can visualize the clustering results.
+
+```{r}
+ 
+
+   # Visualizing the clustering
+   fviz_cluster(kmeans_result, data = df_scaled,
+                geom = "point", ellipse.type = "convex") +
+     theme_minimal() 
+```
+
+You can analyze the composition of the clusters and draw conclusions based on your research questions.
+
+
+**Using agricolae for further analysis:**
+
+If you want to perform multiple comparisons or ANOVA after clustering, you can integrate agricolae methods.
+
+For example, after clustering, if you want to compare the means of different clusters, you could use:
+
+```{r}
+# Add cluster memberships to the original dataset  
+df$Cluster <- factor(kmeans_result$cluster)  
+
+# Perform ANOVA  
+anova_result <- aov(Sepal.Length ~ Cluster, data = df)  
+summary(anova_result)  
+
+# Using Tukey's HSD test to compare means  
+HSD.test(anova_result, "Cluster", group = TRUE)
+```
+
+## **<span style="color: #2C6D26;">Anomaly Detection Use Case</span> **
+
+
+Anomaly detection in agriculture is crucial for identifying irregularities in data, such as unusual crop yields, abnormal soil conditions, or deviations in environmental variables. Here, I'll walk you through an example of anomaly detection using a synthetic dataset related to crop yields. We'll use R and the `anomalize` package, which is suitable for time series anomaly detection.
+
+**Objective**: Detect anomalies in crop yield data over time.
+
+###**Step 1 - Install and Load Required Packages**
+
+If you haven’t installed the required packages, you can do so using the following commands:
+
+
+
+```{r message=FALSE}
+install.packages("anomalize")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("tibble")
+
+library(anomalize)
+library(ggplot2)
+library(dplyr)
+library(tibble)
+```
+
+### **Step 2 - Create a Sample Dataset**
+
+Let's create a synthetic dataset that simulates monthly crop yields with some anomalies:
+
+```{r}
+set.seed(123)
+
+# Generate synthetic data
+dates <- seq.Date(from = as.Date("2023-01-01"), by = "month", length.out = 24)
+yields <- rnorm(24, mean = 50, sd = 10)  # Normal crop yields
+yields[c(5, 12, 18)] <- yields[c(5, 12, 18)] + c(20, -15, 25)  # 
+```
+
+Adding anomalies
+```{r}
+
+
+# Create a data frame
+crop_data <- tibble(date = dates, yield = yields)
+
+# Print the dataset
+print(crop_data)
+```
+
+### **Step 3 - Detect Anomalies**
+
+
+We’ll use the `anomalize` package to detect anomalies in the crop yield data. The package provides a straightforward way to apply anomaly detection to time series data.
+
+```{r message=FALSE}
+# Convert to time series object
+crop_data_ts <- crop_data %>%
+  arrange(date) %>%
+  as_tibble() %>%
+  time_decompose(yield, method = "stl") %>%
+  anomalize(remainder, method = "iqr") %>%
+  time_recompose()
+
+# Print the anomaly results
+print(crop_data_ts)
+```
+
+### **Step 4 - Visualize the Results**
+
+
+We can visualize the detected anomalies to better understand where they occur:
+
+```{r}
+# Plot the results
+ggplot(crop_data_ts, aes(x = date, y = observed)) +
+  geom_line(color = "blue") +
+  geom_point(data = subset(crop_data_ts, anomaly == "Yes"), aes(color = anomaly), size = 3) +
+  labs(title = "Anomaly Detection in Crop Yields",
+       x = "Date",
+       y = "Observed Yield") +
+  theme_minimal()
+```
+
+
+**Summary**
+
+1. **Create a Dataset**: We generated a synthetic dataset with normal crop yields and added some anomalies.
+2. **Apply Anomaly Detection**: We used the `anomalize` package to detect anomalies in the time series data.
+3. **Visualize Results**: We plotted the results to highlight the detected anomalies.
+
+This example demonstrates a basic approach to anomaly detection in agricultural data. For real-world applications, you might have more complex datasets and might need to explore additional preprocessing steps or more sophisticated anomaly detection methods based on the nature of your data.
+
+
