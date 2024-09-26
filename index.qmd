@@ -3,7 +3,7 @@ title: "<b>UNLOCKING INSIGHTS:<br> <br>End-To-End Machine Learning(Supervised Ma
 author: "<font color = #ff6600><b> Biometrics Unit, IITA</b></font><br>"
 ---
 
-# [ **Introduction to Machine Learning (ML)**]{style="color: #2C6D26;"}
+# [**Introduction to Machine Learning (ML)**]{style="color: #2C6D26;"}
 
 Artificial intelligence (**AI**) is a technology that equips machines with the ability to simulate human behaviour, specifically cognitive processes.
 
@@ -13,7 +13,7 @@ Machine learning (**ML**) is a branch of **AI** that uses data and algorithms to
 
 Image credit: *GeoPard Agriculture*
 
-# [ **ML/AI Use Case in Agriculture (ML)**]{style="color: #2C6D26;"}
+# [**ML/AI Use Case in Agriculture (ML)**]{style="color: #2C6D26;"}
 
 <img src="images/Akilimo.png" width="50%"/>
 
@@ -27,7 +27,7 @@ Image credit: *GeoPard Agriculture*
 
 **RiceAdvice** (<https://riceadvice.info)> a smartphone app developed by the Africa Rice Center (AfricaRice), employs ML as part of its modeling framework. It provides field-specific management guidelines for rice production systems in Africa. The guidelines are generated based on farmers' answers to multiple-choice questions about crop management practices and market conditions.
 
-# [ **Introduction to Machine Learning (ML)**]{style="color: #2C6D26;"}
+# [**Introduction to Machine Learning (ML)**]{style="color: #2C6D26;"}
 
 <img src="images/machine_learning_meme.png" width="50%"/>
 
@@ -37,7 +37,7 @@ Source: <https://xkcd.com/1838/>
 
 **Supervised Learning**: the goal is to learn a mapping from inputs to outputs, allowing the model to make predictions on new, unseen data. Common algorithms include linear regression, logistic regression, decision trees, support vector machines, random forest, etc.
 
-# [ **ML: Key Considerations**]{style="color: #2C6D26;"}
+# [**ML: Key Considerations**]{style="color: #2C6D26;"}
 
 When working with machine learning, several key considerations should be taken into account to ensure quality model.
 
@@ -57,7 +57,7 @@ When working with machine learning, several key considerations should be taken i
 
 **Computing Power:** This is very important because not machines (laptop or desktop) have the power to handle certain ML task. When the data is large, which is usually the case in a typical ML task, machines with high processing power are recommended.
 
-# [ **Steps in Machine Learning**]{style="color: #2C6D26;"}
+# [**Steps in Machine Learning**]{style="color: #2C6D26;"}
 
 **STEP 0 - Define the Problem and Collect/Gather the data** that will be used to train the model
 
@@ -73,7 +73,7 @@ When working with machine learning, several key considerations should be taken i
 
 -   Tune the model (some ML): based on the performance metrics, adjust the model parameters. Hyperparameter tuning can be done manually or through automated methods like grid search or random search.
 
-# [ **Introduction to Tidymodels (ML)**]{style="color: #2C6D26;"}
+# [**Introduction to Tidymodels (ML)**]{style="color: #2C6D26;"}
 
 <img src="images/Tidymodels.png" width="80%"/>
 
@@ -81,7 +81,7 @@ When working with machine learning, several key considerations should be taken i
 
 <img src="images/Tidymodels packages.png" width="100%"/>
 
-# [ **Data** ]{style="color: #2C6D26;"}
+# [**Data**]{style="color: #2C6D26;"}
 
 To dive into the tidymodels proper, let us look at the data. Let's consider the Honey dataset (247,903 records). This is a dataset in the public domain (Kaggle)
 
@@ -98,7 +98,7 @@ The Objective here is to predict the variable **purity of honey** using the feat
 -   **Pollen_analysis:** Represents the floral source of the honey sample.
 -   **Price:** The calculated price of the honey.
 
-# [ **Classification Task (ML)**]{style="color: #2C6D26;"}
+# [**Classification Task (ML)**]{style="color: #2C6D26;"}
 
 In the regression task the response variable is quantitative. However, in several instances, the response variable is qualitative i.e. plant health status - healthy or not healthy, or disease severity status - mild, moderate, and severe, etc. Qualitative variables are referred to as categorical variables. The goal of classification is to predict the probability that an instance belongs to a particular class or not. However, the predictors can either be quantitative or qualitative variables.
 
